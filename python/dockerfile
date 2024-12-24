@@ -1,0 +1,11 @@
+FROM  node:latest
+
+WORKDIR ./app
+
+COPY . .
+
+RUN 
+
+EXPOSE "8080"
+
+

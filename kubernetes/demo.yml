@@ -1,0 +1,19 @@
+key: value
+
+name : akash
+
+
+courses:
+  - devops
+  - Linux
+  - python
+
+
+
+info:
+  name: akash
+  age: 34
+  work :
+    - devops
+    - Linux
+  
