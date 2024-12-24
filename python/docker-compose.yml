@@ -1,0 +1,49 @@
+version: '20:45'
+services:
+    nginix:    
+      build: ./nginx
+    images: nginx
+    container_name: nginx
+    ports:
+     - "80:80"
+    networks:
+    - "app"
+    restart: always
+    depand-on: 
+     - django
+
+
+
+
+
+
+
+
+    mysql:
+      images: mysql
+      container_name:  "db count"
+      environment:
+      - MYSQ_ROOT_PASSWD:
+      - MYSQL_DATA_PASSWD:
+      volume:
+       - ./data/mysqhealthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+
+    django:
+      build:
+       context: .
+       images: django-app
+       container_name: django_count
+       ports:
+       - "8000:8000"
+       command:
+       networks:
+       -  note
+       depand-on:
+       - db
+       restart: always
