@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DeamonSets
+metadata:
+  name: nginx-deamonsets
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: nginx-dmn-pod
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
