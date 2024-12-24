@@ -1,0 +1,13 @@
+-
+
+  name: date Playbook
+  hosts: all
+  tasks:
+    - name: show date
+      command:  date
+
+    - name: show pwd
+      command: uptime
+
+    - name: show disk
+      command: df -h
